@@ -1,28 +1,26 @@
 // Global Variables
+var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'me',
+  host: 'localhost',
+  user: 'root',
   password : ' ',
   database : 'zoo_db'
 });
  
 
-var mysql      = require('mysql');
-var prompt = require('prompt');
-  prompt.start();
-  prompt.message(" ");
-
-
 connection.connect(function (err) {
-  if (err){
+  if (err) {
     console.error('err connection ' + err.stack);
-    return;
-  } else{
+  } else {
     console.log("No Error here");
+    return
   }
 });
 
 
 
-
+var prompt = require('prompt');
+// Start the prompt
+prompt.start();
+prompt.message = " "
 

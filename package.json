@@ -1,0 +1,23 @@
+{
+  "name": "zoo_db",
+  "version": "1.0.0",
+  "description": "This is an APP created using node.js and sequel pro.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpetro07/zoo_db.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpetro07/zoo_db/issues"
+  },
+  "homepage": "https://github.com/dpetro07/zoo_db#readme",
+  "dependencies": {
+    "mysql": "^2.10.2",
+    "prompt": "^0.2.14"
+  }
+}
