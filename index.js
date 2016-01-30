@@ -90,6 +90,24 @@ var zoo = {
         currentScope.view(currentScope);
       }
     });
+  },
+  type: function(input_scope){
+    var currentScope = input_scope;
+    console.log("Enter animal type to find how many animals we have of those type.");
+    prompt.get(['-->', 'animal_type'], function (err, result){
+      connection.query.length();
+      currentScope.menu();
+      currentScope.promptUser();
+    });
+  },
+  care: function(input_scope){
+    var currentScope = input_scope;
+    console.log("Enter city name: NY or SF");
+    prompt.get(['-->', 'city_name'], function (err, result){
+      connection.query(); //Need to call the function with a string in the form of a MySQL to selecr the # of animals that all the caretakers from the specific user inputed city.
+       currentScope.visit();
+       currentScope.view(currentScope);
+    });
   }
 }
 
