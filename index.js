@@ -43,6 +43,15 @@ var zoo = {
     console.log();
     console.log("Enter (Q): -------> to Quit and exit the Zoo!");
     return;
+  },
+  add: function(input_scope){
+    var currentScope = input_scope;
+    console.log("To add an animal to the zoo please fill out the following form for us!");
+    prompt.get(['-->', 'name', 'type', 'age'], function (err, result) {
+      connection.query();
+      currentScope.menu();
+      currentScope.promptUser();
+    });
   }
 }
 
