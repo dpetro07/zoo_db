@@ -111,12 +111,22 @@ var zoo = {
   },
   animId: function(input_scope){
     var currentScope = input_scope;
-    console.log("Enter ID of the animal you want to visit.");
+    console.log("Enter the ID of the animal you want to visit.");
     prompt.get(['-->', 'animal_id'], function (err, result){
       connection.query(); //Get the data for the particular animal of that ID that the user typed in.
       currentScope.visit();
       currentScope.view(currentScope);
     });
+  },
+  name: function(input_scope){
+    var currentScope = input_scope;
+    console.log("Enter the name of the animal you want to visit.");
+    prompt.get(['-->', 'name'], function (err, result){
+      connection.query(); //Get the data for the particular animal of that animal name that the user typed in.
+      currentScope.visit();
+      currentScope.view(currentScope);
+    });
   }
+
 }
 
