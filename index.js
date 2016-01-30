@@ -108,6 +108,15 @@ var zoo = {
        currentScope.visit();
        currentScope.view(currentScope);
     });
+  },
+  animId: function(input_scope){
+    var currentScope = input_scope;
+    console.log("Enter ID of the animal you want to visit.");
+    prompt.get(['-->', 'animal_id'], function (err, result){
+      connection.query(); //Get the data for the particular animal of that ID that the user typed in.
+      currentScope.visit();
+      currentScope.view(currentScope);
+    });
   }
 }
 
