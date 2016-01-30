@@ -6,6 +6,7 @@ var connection = mysql.createConnection({
   password : '',
   database : 'zoo_db'
 });
+//var this; 
  
 
 connection.connect(function (err) {
@@ -30,7 +31,18 @@ var zoo = {
   welcome: function(){
     console.log("Welcome to the Zoo and Friends App~!");
     return;
-  } 
-
+  },
+  menu: function(){
+    console.log("Enter (A): -------> to Add a new animal to the Zoo!");
+    console.log();
+    console.log("Enter (U): -------> to Update info on a new animal to the Zoo!");
+    console.log();
+    console.log("Enter (V): -------> to Visit the animals in the Zoo!");
+    console.log();
+    console.log("Enter (D): -------> to Adopt an animal from the Zoo!");
+    console.log();
+    console.log("Enter (Q): -------> to Quit and exit the Zoo!");
+    return;
+  }
 }
 
