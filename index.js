@@ -13,7 +13,7 @@ connection.connect(function (err) {
   if (err) {
     console.error('err connection ' + err.stack);
   } else {
-    console.log("No Error here; Continue");
+    //console.log("No Error here; Continue");
     return;
   }
 });
@@ -95,7 +95,7 @@ var zoo = {
     var currentScope = input_scope;
     console.log("Enter animal type to find how many animals we have of those type.");
     prompt.get(['-->', 'animal_type'], function (err, result){
-      connection.query("SELECT COUNT(type) FROM animals WHERE type=?", result.animal_type, function (err, results, fields){
+      connection.query("SELECT COUNT(*) AS total FROM animals WHERE type=?", [result.animal_type], function (err, results, fields){
         if (err) throw err;
         console.log();
       });
@@ -107,7 +107,7 @@ var zoo = {
     var currentScope = input_scope;
     console.log("Enter city name: NY or SF");
     prompt.get(['-->', 'city_name'], function (err, result){
-      connection.query("SELECT COUNT(*) AS total FROM animals, caretakers WHERE animals.caretaker_id = caretakers.id AND caretakers.city = ?", [result.city_name], function(err, results, fields){
+      connection.query("SELECT COUNT(*) AS total FROM animals, caretakers WHERE animals.caretaker_id = caretakers.id AND caretakers.city = ?", [result.city_name], function (err, results, fields){
         if (err) throw err;
         console.log("Total animals in " + result.city_name +"=" + results[0].total);
       });
@@ -119,7 +119,16 @@ var zoo = {
     var currentScope = input_scope;
     console.log("Enter the ID of the animal you want to visit.");
     prompt.get(['-->', 'animal_id'], function (err, result){
-      connection.query(); //Get the data for the particular animal of that ID that the user typed in.
+      connection.query('SELECT * FROM animals WHERE id = ?', [result.animal_id], function(err, results, fields) {
+        if (err) throw err;
+        else {
+          console.log('Animal Type: ' + results[0].type);
+          console.log('Animal ID: ' + results[0].id);
+          console.log('Caretaker ID: ' + results[0].caretaker_id);
+          console.log('Name: ' + results[0].name);
+          console.log('Age: ' + results[0].age);
+        }
+      });
       currentScope.visit();
       currentScope.view(currentScope);
     });
@@ -174,7 +183,7 @@ var zoo = {
     prompt.get(['animal_id'], function (err, result){
       connection.query("DELETE FROM animals WHERE id=?", result.animal_id ,function(err,results,fields){
         if (err) throw err; 
-        console.log("You've just adopted!");
+        console.log("You've just adopted! Congratulations!");
       });
       currentScope.visit();
       currentScope.view(currentScope); 
